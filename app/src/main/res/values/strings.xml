@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Musical Structure</string>
+    <string name="album_name_string">album_name</string>
+    <string name="artist_name_string">artist_name</string>
+    <string name="permission_needed">Permission Needed</string>
+    <string name="read_external_storage">Read external storage</string>
+    <string name="artists">ARTISTS</string>
+    <string name="albums">ALBUMS</string>
+    <string name="songs">SONGS</string>
+    <string name="song_name_string">song_name</string>
+    <string name="permission_granted">Permission Granted!</string>
+    <string name="permission_denied">Permission Denied!</string>
+</resources>
