@@ -1,4 +1,4 @@
-package com.robertkiszelirk.musicalstructure;
+package com.robertkiszelirk.musicalstructure.activities;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -17,6 +17,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.robertkiszelirk.musicalstructure.R;
+import com.robertkiszelirk.musicalstructure.adapters.PagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.robertkiszelirk.musicalstructure;
+package com.robertkiszelirk.musicalstructure.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,15 +8,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.robertkiszelirk.musicalstructure.R;
+
 import java.util.ArrayList;
 
-class AlbumAdapter extends BaseAdapter {
+public class AlbumAdapter extends BaseAdapter {
 
     private Context context;
 
     private ArrayList<String> albumsList;
 
-    AlbumAdapter(Context context, ArrayList<String> albumsList){
+    public AlbumAdapter(Context context, ArrayList<String> albumsList){
         this.context = context;
         this.albumsList = albumsList;
     }

@@ -1,23 +1,31 @@
-package com.robertkiszelirk.musicalstructure;
+package com.robertkiszelirk.musicalstructure.fragments;
 
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
+
+import com.robertkiszelirk.musicalstructure.R;
+import com.robertkiszelirk.musicalstructure.activities.ArtistActvity;
+import com.robertkiszelirk.musicalstructure.adapters.ArtistAdapter;
+import com.robertkiszelirk.musicalstructure.adapters.Song;
 
 import java.util.ArrayList;
 
-public class MusicalSongs extends Fragment {
+public class MusicalArtists extends Fragment {
 
     private ArrayList<Song> songsList;
+
+    private ArrayList<String> artistsList;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +33,11 @@ public class MusicalSongs extends Fragment {
 
         songsList = new ArrayList<>();
 
+        artistsList = new ArrayList<>();
+
         fillSongsList();
+
+        fillArtistsList();
 
     }
 
@@ -33,16 +45,20 @@ public class MusicalSongs extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View baseView = inflater.inflate(R.layout.musical_songs, container,false);
+        View baseView = inflater.inflate(R.layout.musical_artists, container,false);
 
-        RecyclerView recyclerView = (RecyclerView) baseView.findViewById(R.id.musical_songs_recycler_view);
-        SongAdapter songAdapter = new SongAdapter(getContext(),songsList);
-        recyclerView.setAdapter(songAdapter);
+        GridView gridView = (GridView) baseView.findViewById(R.id.musical_artists_grid_view);
+        gridView.setAdapter(new ArtistAdapter(this.getContext(),artistsList));
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
+                Intent intent = new Intent(getActivity(),ArtistActvity.class);
+                intent.putExtra(getString(R.string.artist_name_string),artistsList.get(position));
+                startActivity(intent);
+            }
+        });
 
         return baseView;
     }
@@ -72,4 +88,13 @@ public class MusicalSongs extends Fragment {
         }
     }
 
+    private void fillArtistsList() {
+
+        for(Song song : songsList){
+            if(!artistsList.contains(song.getSongArtist())){
+                artistsList.add(song.getSongArtist());
+            }
+        }
+
+    }
 }

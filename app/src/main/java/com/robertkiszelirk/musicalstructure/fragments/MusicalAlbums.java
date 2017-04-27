@@ -1,4 +1,4 @@
-package com.robertkiszelirk.musicalstructure;
+package com.robertkiszelirk.musicalstructure.fragments;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -14,13 +14,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.robertkiszelirk.musicalstructure.R;
+import com.robertkiszelirk.musicalstructure.activities.AlbumActivity;
+import com.robertkiszelirk.musicalstructure.adapters.AlbumAdapter;
+import com.robertkiszelirk.musicalstructure.adapters.Song;
+
 import java.util.ArrayList;
 
-public class MusicalArtists extends Fragment {
+public class MusicalAlbums extends Fragment {
 
     private ArrayList<Song> songsList;
 
-    private ArrayList<String> artistsList;
+    private ArrayList<String> albumsList;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,11 +33,11 @@ public class MusicalArtists extends Fragment {
 
         songsList = new ArrayList<>();
 
-        artistsList = new ArrayList<>();
+        albumsList = new ArrayList<>();
 
         fillSongsList();
 
-        fillArtistsList();
+        fillAlbumsList();
 
     }
 
@@ -40,17 +45,17 @@ public class MusicalArtists extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View baseView = inflater.inflate(R.layout.musical_artists, container,false);
+        View baseView = inflater.inflate(R.layout.musical_albums, container,false);
 
-        GridView gridView = (GridView) baseView.findViewById(R.id.musical_artists_grid_view);
-        gridView.setAdapter(new ArtistAdapter(this.getContext(),artistsList));
+        GridView gridView = (GridView) baseView.findViewById(R.id.musical_albums_grid_view);
+        gridView.setAdapter(new AlbumAdapter(this.getContext(),albumsList));
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(getActivity(),ArtistActvity.class);
-                intent.putExtra(getString(R.string.artist_name_string),artistsList.get(position));
+                Intent intent = new Intent(getActivity(),AlbumActivity.class);
+                intent.putExtra(getString(R.string.album_name_string),albumsList.get(position));
                 startActivity(intent);
             }
         });
@@ -83,13 +88,14 @@ public class MusicalArtists extends Fragment {
         }
     }
 
-    private void fillArtistsList() {
+    private void fillAlbumsList() {
 
         for(Song song : songsList){
-            if(!artistsList.contains(song.getSongArtist())){
-                artistsList.add(song.getSongArtist());
+            if(!albumsList.contains(song.getSongAlbum())){
+                albumsList.add(song.getSongAlbum());
             }
         }
 
     }
+
 }

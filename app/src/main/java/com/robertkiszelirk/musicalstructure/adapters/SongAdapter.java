@@ -1,4 +1,4 @@
-package com.robertkiszelirk.musicalstructure;
+package com.robertkiszelirk.musicalstructure.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,16 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.robertkiszelirk.musicalstructure.activities.MainActivity;
+import com.robertkiszelirk.musicalstructure.R;
+
 import java.util.ArrayList;
 
 
-class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
+public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
 
     private ArrayList<Song> songsList;
 
     private  Context context;
 
-    SongAdapter(Context context, ArrayList<Song> songs){
+    public SongAdapter(Context context, ArrayList<Song> songs){
         this.songsList = songs;
         this.context = context;
     }

@@ -1,4 +1,4 @@
-package com.robertkiszelirk.musicalstructure;
+package com.robertkiszelirk.musicalstructure.activities;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -16,11 +16,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.robertkiszelirk.musicalstructure.R;
+
 import java.util.ArrayList;
 
-public class ArtistActvity extends AppCompatActivity{
+public class AlbumActivity extends AppCompatActivity {
 
-    private String artistName;
+    private String albumName;
 
     private ArrayList<String> songsList;
 
@@ -28,14 +30,14 @@ public class ArtistActvity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_artist);
+        setContentView(R.layout.activity_album);
 
         Intent intent = getIntent();
-        artistName = intent.getStringExtra(getString(R.string.artist_name_string));
+        albumName = intent.getStringExtra(getString(R.string.album_name_string));
 
-        final Toolbar artistToolbar = (Toolbar) findViewById(R.id.artist_toolbar);
-        artistToolbar.setTitle("" + artistName);
-        setSupportActionBar(artistToolbar);
+        final Toolbar albumToolbar = (Toolbar) findViewById(R.id.album_toolbar);
+        albumToolbar.setTitle("" + albumName);
+        setSupportActionBar(albumToolbar);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -44,9 +46,9 @@ public class ArtistActvity extends AppCompatActivity{
 
         fillSongsList();
 
-        ListView listView = (ListView) findViewById(R.id.songs_list_of_artist);
+        ListView listView = (ListView) findViewById(R.id.songs_list_of_album);
 
-        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,songsList);
+        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, songsList);
 
         listView.setAdapter(listAdapter);
 
@@ -54,7 +56,7 @@ public class ArtistActvity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MainActivity.setCurrentSong(songsList.get(position));
-                NavUtils.navigateUpFromSameTask(ArtistActvity.this);
+                NavUtils.navigateUpFromSameTask(AlbumActivity.this);
             }
         });
     }
@@ -70,10 +72,10 @@ public class ArtistActvity extends AppCompatActivity{
         if(cursor != null && cursor.moveToFirst()){
 
             int songTitleColumnIndex = cursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
-            int songArtistColumnIndex = cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
+            int songAlbumColumnIndex = cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM);
 
             do{
-                if(cursor.getString(songArtistColumnIndex).equals(artistName)) {
+                if(cursor.getString(songAlbumColumnIndex).equals(albumName)) {
                     songsList.add(cursor.getString(songTitleColumnIndex));
                 }
 
@@ -83,5 +85,4 @@ public class ArtistActvity extends AppCompatActivity{
             cursor.close();
         }
     }
-
 }

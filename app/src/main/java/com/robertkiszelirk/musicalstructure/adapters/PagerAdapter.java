@@ -1,14 +1,18 @@
-package com.robertkiszelirk.musicalstructure;
+package com.robertkiszelirk.musicalstructure.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-class PagerAdapter extends FragmentStatePagerAdapter {
+import com.robertkiszelirk.musicalstructure.fragments.MusicalAlbums;
+import com.robertkiszelirk.musicalstructure.fragments.MusicalArtists;
+import com.robertkiszelirk.musicalstructure.fragments.MusicalSongs;
+
+public class PagerAdapter extends FragmentStatePagerAdapter {
 
     private int numOfTabs;
 
-    PagerAdapter(FragmentManager fm, int numberOfTabs) {
+    public PagerAdapter(FragmentManager fm, int numberOfTabs) {
         super(fm);
         this.numOfTabs = numberOfTabs;
     }

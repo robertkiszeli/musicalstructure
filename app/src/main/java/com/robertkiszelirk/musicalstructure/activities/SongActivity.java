@@ -1,4 +1,4 @@
-package com.robertkiszelirk.musicalstructure;
+package com.robertkiszelirk.musicalstructure.activities;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+import com.robertkiszelirk.musicalstructure.R;
 
 public class SongActivity extends AppCompatActivity {
 

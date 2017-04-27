@@ -1,27 +1,27 @@
-package com.robertkiszelirk.musicalstructure;
+package com.robertkiszelirk.musicalstructure.adapters;
 
-class Song {
+public class Song {
 
     private String songTitle;
     private String songArtist;
     private String songAlbum;
 
 
-    Song(String artist, String title, String album){
+    public Song(String artist, String title, String album){
         songArtist = artist;
         songTitle = title;
         songAlbum = album;
     }
 
-    String getSongTitle() {
+    public String getSongTitle() {
         return songTitle;
     }
 
-    String getSongArtist() {
+    public String getSongArtist() {
         return songArtist;
     }
 
-    String getSongAlbum() {
+    public String getSongAlbum() {
         return songAlbum;
     }
 }

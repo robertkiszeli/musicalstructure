@@ -11,21 +11,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:launchMode="singleTop">
+        <activity android:name=".activities.MainActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AlbumActivity"
-            android:parentActivityName=".MainActivity" >
+        <activity android:name=".activities.AlbumActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ArtistActvity"
-            android:parentActivityName=".MainActivity" >
+        <activity android:name=".activities.ArtistActvity"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".SongActivity"
-            android:parentActivityName=".MainActivity" >
+        <activity android:name=".activities.SongActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
